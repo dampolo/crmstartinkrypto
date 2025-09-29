@@ -25,6 +25,7 @@ class ApplyView(View):
                   recipient_list=[settings.EMAIL_HOST_USER],
             )
 
+            # Confirmation email to USER
             send_mail(
                   subject=f"Start in Krypto - Bestätigung",
                   message=(
