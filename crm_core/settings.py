@@ -145,6 +145,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Where collectstatic will put files in production
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Additional dirs for development
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
