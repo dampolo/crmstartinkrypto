@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-+vvsd_!m6$ja2j1c)*-=be^25rkwymt9#u4x7i)%99dc7=&eb@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '34.32.2.236']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '34.32.2.236', 'localhost:5173']
 
 
 # Application definition
@@ -62,6 +62,8 @@ CSRF_TRUSTED_ORIGINS = [
 
   'http://localhost:5500',
 
+  'http://localhost:5173'
+
 ]
 
 
@@ -71,6 +73,8 @@ CORS_ALLOWED_ORIGINS = [
   'http://127.0.0.1:5500',
 
   'http://localhost:5500',
+
+  'http://localhost:5173',
 
 ]
 
@@ -147,6 +151,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = "apikey"  # literally the string "apikey"
 EMAIL_HOST_PASSWORD = env("SENDGRID_API_KEY")
