@@ -30,8 +30,7 @@ SECRET_KEY = 'django-insecure-+vvsd_!m6$ja2j1c)*-=be^25rkwymt9#u4x7i)%99dc7=&eb@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '34.32.2.236', 'localhost:5173', 'demo.startinkrypto.de']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '34.32.2.236', 'demo.startinkrypto.de']
 
 # Application definition
 
