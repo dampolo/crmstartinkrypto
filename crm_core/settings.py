@@ -58,11 +58,13 @@ MIDDLEWARE = [
 ]
 CSRF_TRUSTED_ORIGINS = [
 
-  'http://127.0.0.1:5500',
+    'http://127.0.0.1:5500',
 
-  'http://localhost:5500',
+    'http://localhost:5500',
 
-  'http://localhost:5173'
+    'http://localhost:5173',
+
+    'https://demo.startinkrypto.de',
 
 ]
 
@@ -70,12 +72,13 @@ CSRF_TRUSTED_ORIGINS = [
 
 CORS_ALLOWED_ORIGINS = [
 
-  'http://127.0.0.1:5500',
+    'http://127.0.0.1:5500',
 
-  'http://localhost:5500',
+    'http://localhost:5500',
 
-  'http://localhost:5173',
+    'http://localhost:5173',
 
+    'https://demo.startinkrypto.de',
 ]
 
 ROOT_URLCONF = 'crm_core.urls'
