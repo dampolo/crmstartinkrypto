@@ -1,15 +1,15 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 class Customer(models.Model):
-    TITLE_CHOICES = [
-        ('Herr', 'Herr'),
-        ('Frau', 'Frau'),
-        ('Divers', 'Divers'),
-    ]
+    class TitleChoices(models.TextChoices):
+        HERR = 'herr', _('Herr')
+        FRAU = 'frau', _('Frau')
+        DIVERS = 'divers', _('Divers')
 
     photo = models.ImageField(upload_to='customers/photos/', blank=True, null=True)
     customer_number = models.CharField(max_length=50, unique=True)
-    title = models.CharField(max_length=20, choices=TITLE_CHOICES, blank=True)
+    title = models.CharField(max_length=20, choices=TitleChoices)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     street = models.CharField(max_length=200)
