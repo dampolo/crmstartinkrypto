@@ -9,7 +9,7 @@ class Company(models.Model):
     city = models.CharField(max_length=100)
     owner_name = models.CharField(max_length=255)
     tax_number = models.CharField(max_length=50)
-    founding = models.PositiveIntegerField(default="")
+    founding = models.CharField(default="")
     email = models.EmailField()
     bank = models.CharField(max_length=100)
     bank_account = models.CharField(max_length=34)
