@@ -1,7 +1,7 @@
 from django.db import models
 
 class Company(models.Model):
-    logo = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    logo = models.ImageField(upload_to='company/', blank=True, null=True)
     name = models.CharField(max_length=255)
     street = models.CharField(max_length=255)
     number = models.CharField(max_length=20)
