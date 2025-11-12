@@ -10,7 +10,7 @@ class Company(models.Model):
     owner_name = models.CharField(max_length=255)
     tax_number = models.CharField(max_length=50)
     founding = models.CharField(default="")
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     bank = models.CharField(max_length=100)
     bank_account = models.CharField(max_length=34)
     swift_code = models.CharField(max_length=20)
