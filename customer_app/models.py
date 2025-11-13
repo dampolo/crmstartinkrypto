@@ -18,9 +18,8 @@ class Customer(models.Model):
     city = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=50, blank=True)
-    portfolio = models.BooleanField(default=False)
-    subscription = models.BooleanField(default=False)
-    invoices = models.PositiveIntegerField(default=0)
+    has_portfolio = models.BooleanField(default=False)
+    has_subscription = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
