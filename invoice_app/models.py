@@ -10,9 +10,9 @@ class ServiceCatalog(models.Model):
         return self.name
 
 class Invoice(models.Model):
-    invoiceNumber = models.CharField(max_length=50, unique=True)
+    invoice_number = models.CharField(max_length=50, unique=True)
     customer = models.ForeignKey(Customer, related_name='invoices', on_delete=models.PROTECT)
-    customerAddress = models.TextField() # snapshot of address at invoice creation
+    customer_address = models.TextField() # snapshot of address at invoice creation
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -34,9 +34,9 @@ class InvoiceService(models.Model):
         on_delete=models.PROTECT
     )
 
-    provision = models.FloatField()
-    amount = models.FloatField()
-    investitionsAmount = models.FloatField()
+    provision = models.DecimalField(decimal_places=2)
+    amount = models.DecimalField(decimal_places=2)
+    investitions_amount = models.DecimalField(decimal_places=2)
 
     def __str__(self):
-        return self.custom_service_name or self.service_catalog.name
+        return self.service_catalog.name
