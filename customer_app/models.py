@@ -6,7 +6,8 @@ class Customer(models.Model):
         HERR = 'herr', _('Herr')
         FRAU = 'frau', _('Frau')
         DIVERS = 'divers', _('Divers')
-
+    
+    is_active = models.BooleanField(default=True)
     photo = models.ImageField(upload_to='customers/photos/', blank=True, null=True)
     customer_number = models.CharField(max_length=50, unique=True)
     title = models.CharField(max_length=20, choices=TitleChoices)
