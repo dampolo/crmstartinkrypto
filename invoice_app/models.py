@@ -3,7 +3,7 @@ from customer_app.models import Customer
 
 class ServiceCatalog(models.Model):
     name = models.CharField(max_length=200)
-    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.name
@@ -32,7 +32,7 @@ class Invoice(models.Model):
     customer_address = models.TextField()
     
     # Saved final PDF
-    pdf_file = models.FieldFile(updated_at="invoices/", null=True, blank=True)
+    # pdf_file = models.FieldFile(updated_at="invoices/", null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -55,7 +55,7 @@ class InvoiceService(models.Model):
         on_delete=models.PROTECT
     )
 
-    # Custom service name from frontend
+     # Custom service name from frontend (special unique service)
     custom_service_name = models.CharField(
         max_length=200,
         null=True,
