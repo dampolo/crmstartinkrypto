@@ -1,5 +1,7 @@
 from django.db import models
 from customer_app.models import Customer
+from auth_app.models import User
+
 
 class ServiceCatalog(models.Model):
     name = models.CharField(max_length=200)
@@ -23,6 +25,12 @@ class Invoice(models.Model):
 
     customer = models.ForeignKey(
         Customer, 
+        related_name='invoices', 
+        on_delete=models.PROTECT
+    )
+
+    user = models.ForeignKey(
+        User, 
         related_name='invoices', 
         on_delete=models.PROTECT
     )
