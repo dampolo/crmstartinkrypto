@@ -4,11 +4,45 @@ from auth_app.models import User
 
 
 class ServiceCatalog(models.Model):
+    class PriceType(models.TextChoices):
+        FIXED = 'fixed', ('Fixed Amount (€)')
+        PERCENT = 'percent', ('Percentage (%)')
+
+    name = models.CharField(max_length=200)
+
+    price_type = models.CharField(
+        max_length=20,
+        choices=PriceType.choices,
+        default=PriceType.FIXED
+    )
+
+    # Fixed amount (example: 700.00 €)
+    amount_fixed = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+
+    # Percent amount (example: 0.05 = 5%)
+    amount_percent = models.DecimalField(
+        max_digits=10,
+        decimal_places=4,
+        null=True,
+        blank=True,
+        help_text="Percentage as decimal (e.g. 0.05 = 5%)"
+    )
+
+    def __str__(self):
+        return f"{self.name} ({self.price_type})"
+    
+
+class ServiceCatalogForSpecificInvoice(models.Model):
     name = models.CharField(max_length=200)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} {self.amount}'
 
 class Invoice(models.Model):
     class InvoiceType(models.TextChoices):
@@ -56,7 +90,7 @@ class InvoiceService(models.Model):
     )
 
     service_catalog = models.ForeignKey(
-        ServiceCatalog,
+        ServiceCatalogForSpecificInvoice,
         null=True,
         blank=True,
         related_name="invoice_items",
